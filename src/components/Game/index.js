@@ -2,13 +2,13 @@ import styles from "./styles.module.css";
 
 export default function Game() {
   return (
-    <>
-      <img src="assets/forca0"></img>
+    <div className={styles.container}>
+      <img src="assets/img/forca0.png"></img>
 
       <div>
-        <button></button>
-        <div>_ _ _ _ _ _ _</div>
+        <button>Escolher Palavra</button>
+        <div className={styles.palavra}>_ _ _ _ _ _ _</div>
       </div>
-    </>
+    </div>
   );
 }
