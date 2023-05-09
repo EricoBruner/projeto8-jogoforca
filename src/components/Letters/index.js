@@ -5,9 +5,11 @@ import alfabeto from "./alfabeto";
 export default function Letters() {
   return (
     <div className={styles.container}>
-      <div>A</div>
-      <div>B</div>
-      <div>C</div>
+      {alfabeto.map((letra) => (
+        <button className={styles.letter} disabled={true}>
+          {letra}
+        </button>
+      ))}
     </div>
   );
 }

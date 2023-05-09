@@ -7,7 +7,7 @@ export default function Game() {
 
       <div>
         <button>Escolher Palavra</button>
-        <div className={styles.palavra}>_ _ _ _ _ _ _</div>
+        <div className={styles.palavra}>{}</div>
       </div>
     </div>
   );
