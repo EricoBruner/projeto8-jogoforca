@@ -36,11 +36,10 @@
   gap: 8px;
 }
 
-.palavra div {
+.palavra > div {
   font-family: "Noto Sans";
   font-weight: 700;
   font-size: 50px;
-  color: #000000;
 }
 
 .ganhou {

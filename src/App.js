@@ -26,12 +26,13 @@ export default function App() {
       })
     );
 
-    console.log(novaPalavra);
     return novaPalavra;
   }
 
   function iniciarJogo() {
     setPalavra(sorteiaPalavra());
+    setStatus("");
+    setErros(0);
     setJogoIniciado(true);
   }
 
@@ -42,47 +43,39 @@ export default function App() {
 
   function verificaPalavra(letra) {
     let novaPalavraExibida = [...palavraExibida];
+    let novoErros = erros;
+    let novoAcertos = acertos;
 
     if (palavra.includes(letra)) {
       palavra.forEach((item, index) => {
         if (item === letra) {
           novaPalavraExibida[index] = letra;
-          acertouPalavra();
+          novoAcertos += 1;
         }
       });
     } else {
-      errouPalavra();
+      novoErros += 1;
     }
 
+    setErros(novoErros);
+    setAcertos(novoAcertos);
     setPalavraExibida(novaPalavraExibida);
-  }
 
-  function errouPalavra() {
-    setErros(erros + 1);
-    if (erros === 5) {
+    if (novoErros === 6) {
+      setPalavraExibida(palavra);
+      setStatus("perdeu");
+      fimDeJogo();
+    } else if (novoAcertos === palavra.length) {
+      setStatus("ganhou");
       fimDeJogo();
     }
-  }
-
-  function acertouPalavra() {
-    if (acertos === palavra.length) {
-      fimDeJogo();
-    }
-
-    setAcertos(acertos + 1);
   }
 
   function fimDeJogo() {
     setJogoIniciado(false);
-
-    if (erros === 6) {
-      setPalavraExibida(palavra);
-      setStatus("perdeu");
-    } else {
-      setStatus("ganhou");
-    }
-
-    console.log("ENTROU NO FIM");
+    setPalavra([]);
+    setLetrasPressionadas([]);
+    setAcertos(0);
   }
 
   return (
