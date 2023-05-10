@@ -1,9 +1,15 @@
 import styles from "./styles.module.css";
 
-export default function Game({ iniciarJogo, jogoIniciado, palavraExibida }) {
+export default function Game({
+  iniciarJogo,
+  jogoIniciado,
+  palavraExibida,
+  erros,
+  status,
+}) {
   return (
     <div className={styles.container}>
-      <img src="assets/img/forca0.png" />
+      <img src={`assets/img/forca${erros}.png`} />
 
       <div>
         <button
@@ -14,9 +20,11 @@ export default function Game({ iniciarJogo, jogoIniciado, palavraExibida }) {
           Escolher Palavra
         </button>
 
-        <div className={styles.palavra}>
+        <div className={`${styles.palavra} ${status}`}>
           {jogoIniciado
-            ? palavraExibida.map((letra) => <div>{letra}</div>)
+            ? palavraExibida.map((letra, index) => (
+                <div key={index}>{letra}</div>
+              ))
             : ""}
         </div>
       </div>

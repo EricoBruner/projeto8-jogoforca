@@ -33,7 +33,7 @@
 
 .palavra {
   display: flex;
-  gap: 15px;
+  gap: 8px;
 }
 
 .palavra div {
@@ -41,4 +41,12 @@
   font-weight: 700;
   font-size: 50px;
   color: #000000;
+}
+
+.ganhou {
+  color: #27ae60;
+}
+
+.perdeu {
+  color: #ff0000;
 }

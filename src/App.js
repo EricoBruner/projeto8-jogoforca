@@ -12,6 +12,9 @@ export default function App() {
   let [palavraExibida, setPalavraExibida] = useState([]);
   let [jogoIniciado, setJogoIniciado] = useState(false);
   let [letrasPressionadas, setLetrasPressionadas] = useState([]);
+  let [erros, setErros] = useState(0);
+  let [acertos, setAcertos] = useState(0);
+  let [status, setStatus] = useState("");
 
   function sorteiaPalavra() {
     palavras.sort(() => Math.random() - 0.5);
@@ -23,6 +26,7 @@ export default function App() {
       })
     );
 
+    console.log(novaPalavra);
     return novaPalavra;
   }
 
@@ -33,6 +37,52 @@ export default function App() {
 
   function verificaLetra(letra) {
     setLetrasPressionadas([letra, ...letrasPressionadas]);
+    verificaPalavra(letra);
+  }
+
+  function verificaPalavra(letra) {
+    let novaPalavraExibida = [...palavraExibida];
+
+    if (palavra.includes(letra)) {
+      palavra.forEach((item, index) => {
+        if (item === letra) {
+          novaPalavraExibida[index] = letra;
+          acertouPalavra();
+        }
+      });
+    } else {
+      errouPalavra();
+    }
+
+    setPalavraExibida(novaPalavraExibida);
+  }
+
+  function errouPalavra() {
+    setErros(erros + 1);
+    if (erros === 5) {
+      fimDeJogo();
+    }
+  }
+
+  function acertouPalavra() {
+    if (acertos === palavra.length) {
+      fimDeJogo();
+    }
+
+    setAcertos(acertos + 1);
+  }
+
+  function fimDeJogo() {
+    setJogoIniciado(false);
+
+    if (erros === 6) {
+      setPalavraExibida(palavra);
+      setStatus("perdeu");
+    } else {
+      setStatus("ganhou");
+    }
+
+    console.log("ENTROU NO FIM");
   }
 
   return (
@@ -42,6 +92,8 @@ export default function App() {
         palavra={palavra}
         jogoIniciado={jogoIniciado}
         palavraExibida={palavraExibida}
+        erros={erros}
+        status={status}
       />
       <Letters
         jogoIniciado={jogoIniciado}
