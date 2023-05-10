@@ -1,18 +1,23 @@
 import styles from "./styles.module.css";
 
-import alfabeto from "./alfabeto";
+import alfabeto from "./utils/alfabeto";
+import Letter from "./Letter";
 
-export default function Letters({ jogoIniciado }) {
+export default function Letters({
+  jogoIniciado,
+  letrasPressionadas,
+  verificaLetra,
+}) {
   return (
     <div className={styles.container}>
       {alfabeto.map((letra) => (
-        <button
+        <Letter
           key={letra}
-          className={jogoIniciado ? styles.letterActive : styles.letterDisabled}
-          disabled={jogoIniciado ? false : true}
-        >
-          {letra}
-        </button>
+          letra={letra}
+          jogoIniciado={jogoIniciado}
+          letrasPressionadas={letrasPressionadas}
+          verificaLetra={verificaLetra}
+        />
       ))}
     </div>
   );

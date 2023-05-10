@@ -11,6 +11,7 @@ export default function App() {
   let [palavra, setPalavra] = useState([]);
   let [palavraExibida, setPalavraExibida] = useState([]);
   let [jogoIniciado, setJogoIniciado] = useState(false);
+  let [letrasPressionadas, setLetrasPressionadas] = useState([]);
 
   function sorteiaPalavra() {
     palavras.sort(() => Math.random() - 0.5);
@@ -25,10 +26,13 @@ export default function App() {
     return novaPalavra;
   }
 
-  async function iniciarJogo() {
+  function iniciarJogo() {
     setPalavra(sorteiaPalavra());
-
     setJogoIniciado(true);
+  }
+
+  function verificaLetra(letra) {
+    setLetrasPressionadas([letra, ...letrasPressionadas]);
   }
 
   return (
@@ -43,6 +47,8 @@ export default function App() {
         jogoIniciado={jogoIniciado}
         palavra={palavra}
         palavraExibida={palavraExibida}
+        letrasPressionadas={letrasPressionadas}
+        verificaLetra={verificaLetra}
       />
     </>
   );

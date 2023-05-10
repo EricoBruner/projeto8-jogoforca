@@ -1,0 +1,30 @@
+.letterActive {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e1ecf4;
+  border: 1px solid #c0cfda;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 16px;
+  color: #798a9f;
+  cursor: pointer;
+}
+
+.letterDisabled {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #9faab5;
+  border: 1px solid #7aa7c7;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 16px;
+  color: #798a9f;
+}
