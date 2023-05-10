@@ -7,6 +7,7 @@ export default function Letters({ jogoIniciado }) {
     <div className={styles.container}>
       {alfabeto.map((letra) => (
         <button
+          key={letra}
           className={jogoIniciado ? styles.letterActive : styles.letterDisabled}
           disabled={jogoIniciado ? false : true}
         >

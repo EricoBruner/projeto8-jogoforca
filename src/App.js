@@ -8,23 +8,42 @@ import "./styles/global.css";
 import { useState } from "react";
 
 export default function App() {
-  let [palavra, setPalavra] = useState(sorteiaPalavra());
+  let [palavra, setPalavra] = useState([]);
+  let [palavraExibida, setPalavraExibida] = useState([]);
   let [jogoIniciado, setJogoIniciado] = useState(false);
 
   function sorteiaPalavra() {
     palavras.sort(() => Math.random() - 0.5);
-    return palavras[0];
+    let novaPalavra = palavras[0].split("");
+
+    setPalavraExibida(
+      novaPalavra.map(() => {
+        return "_";
+      })
+    );
+
+    return novaPalavra;
   }
 
-  function iniciarJogo() {
+  async function iniciarJogo() {
     setPalavra(sorteiaPalavra());
+
     setJogoIniciado(true);
   }
 
   return (
     <>
-      <Game iniciarJogo={iniciarJogo} />
-      <Letters jogoIniciado={jogoIniciado} />
+      <Game
+        iniciarJogo={iniciarJogo}
+        palavra={palavra}
+        jogoIniciado={jogoIniciado}
+        palavraExibida={palavraExibida}
+      />
+      <Letters
+        jogoIniciado={jogoIniciado}
+        palavra={palavra}
+        palavraExibida={palavraExibida}
+      />
     </>
   );
 }
