@@ -110,7 +110,7 @@ export default function App() {
         letrasPressionadas={letrasPressionadas}
         verificaLetra={verificaLetra}
       />
-      {jogoIniciado ? <Chute chutandoPalavra={chutandoPalavra} /> : ""}
+      {jogoIniciado && <Chute chutandoPalavra={chutandoPalavra} />}
     </>
   );
 }
