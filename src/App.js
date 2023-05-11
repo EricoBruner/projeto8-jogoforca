@@ -74,6 +74,21 @@ export default function App() {
     }
   }
 
+  function chutandoPalavra(chute) {
+    let arrayChute = chute[0].split("");
+    let chutouCerto = JSON.stringify(palavra) === JSON.stringify(arrayChute);
+
+    if (chutouCerto) {
+      setPalavraExibida(palavra);
+      setStatus("ganhou");
+      fimDeJogo();
+    } else {
+      setPalavraExibida(palavra);
+      setStatus("perdeu");
+      fimDeJogo();
+    }
+  }
+
   function fimDeJogo() {
     setJogoIniciado(false);
   }
@@ -95,7 +110,7 @@ export default function App() {
         letrasPressionadas={letrasPressionadas}
         verificaLetra={verificaLetra}
       />
-      <Chute />
+      {jogoIniciado ? <Chute chutandoPalavra={chutandoPalavra} /> : ""}
     </>
   );
 }
