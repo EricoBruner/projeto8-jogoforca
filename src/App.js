@@ -1,11 +1,11 @@
+import { useState } from "react";
 import Game from "./components/Game";
 import Letters from "./components/Letters";
-
+import Chute from "./components/Chute";
 import palavras from "./palavras";
 
 import "./styles/reset.css";
 import "./styles/global.css";
-import { useState } from "react";
 
 export default function App() {
   let [palavra, setPalavra] = useState([]);
@@ -30,10 +30,13 @@ export default function App() {
   }
 
   function iniciarJogo() {
-    setPalavra(sorteiaPalavra());
+    setPalavra([]);
+    setLetrasPressionadas([]);
+    setAcertos(0);
     setStatus("");
     setErros(0);
     setJogoIniciado(true);
+    setPalavra(sorteiaPalavra());
   }
 
   function verificaLetra(letra) {
@@ -73,9 +76,6 @@ export default function App() {
 
   function fimDeJogo() {
     setJogoIniciado(false);
-    setPalavra([]);
-    setLetrasPressionadas([]);
-    setAcertos(0);
   }
 
   return (
@@ -95,6 +95,7 @@ export default function App() {
         letrasPressionadas={letrasPressionadas}
         verificaLetra={verificaLetra}
       />
+      <Chute />
     </>
   );
 }
