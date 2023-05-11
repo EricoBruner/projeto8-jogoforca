@@ -16,10 +16,15 @@ export default function Game({
 
   return (
     <div className={styles.container}>
-      <img src={`assets/img/forca${erros}.png`} alt="imagem forca" />
+      <img
+        data-test="game-image"
+        src={`assets/img/forca${erros}.png`}
+        alt="imagem forca"
+      />
 
       <div>
         <button
+          data-test="choose-word"
           onClick={() => {
             iniciarJogo();
           }}
@@ -30,7 +35,7 @@ export default function Game({
         <div className={styles.palavra}>
           {jogoIniciado || status
             ? palavraExibida.map((letra, index) => (
-                <div key={index} className={verificaStatus}>
+                <div data-test="word" key={index} className={verificaStatus}>
                   {letra}
                 </div>
               ))

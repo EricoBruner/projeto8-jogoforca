@@ -8,6 +8,7 @@ export default function Letter({
 }) {
   return (
     <button
+      data-test="letter"
       key={letra}
       onClick={() => verificaLetra(letra)}
       className={
