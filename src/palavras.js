@@ -189,6 +189,15 @@
   "zumbido",
 ];*/
 
-const palavras = ["TEGOSTO", "TEAMO", "VOCEELINDA", "LORA", "MINHAPERFEICAO"];
+const palavras = [
+  "tegosto",
+  "teamo",
+  "voceelinda",
+  "lora",
+  "minhaperfeicao",
+  "saudades",
+  "peixinhogordinho",
+  "teadoro",
+];
 
 export default palavras;
