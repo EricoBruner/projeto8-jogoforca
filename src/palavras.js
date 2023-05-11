@@ -1,4 +1,4 @@
-const palavras = [
+/*const palavras = [
   "abacate",
   "abacaxi",
   "abelha",
@@ -187,6 +187,8 @@ const palavras = [
   "zepelim",
   "zinco",
   "zumbido",
-];
+];*/
+
+const palavras = ["TEGOSTO", "TEAMO", "VOCEELINDA", "LORA", "MINHAPERFEICAO"];
 
 export default palavras;
